@@ -58,6 +58,8 @@ EOF
 cd /tmp/ || exit
 curl --resolve downloads.filestash.app -s "https://downloads.filestash.app/latest/filestash_$(uname -s)-$(uname -m).tar.gpg" | gpg --decrypt | tar xf -
 mv filestash /app/
+
+# This is not neccessary, if gnupg was installed before
 apt-get purge -y --auto-remove gnupg
 
 apt-get install -y curl tor emacs-nox ffmpeg zip poppler-utils > /dev/null
@@ -84,6 +86,7 @@ mv ~/.TinyTeX /usr/share/tinytex
 /usr/share/tinytex/bin/x86_64-linux/tlmgr install cm-super
 ln -s /usr/share/tinytex/bin/x86_64-linux/pdflatex /usr/local/bin/pdflatex
 
+# This is not neccessary, if perl & wget was installed before
 apt-get purge -y --auto-remove perl wget
 
 find /usr/share/ -name 'doc' | xargs rm -rf
@@ -98,3 +101,9 @@ useradd filestash
 chown -R filestash:filestash /app/
 rm -rf /var/lib/apt/lists/*
 rm -rf /tmp/*
+
+# sometimes its useful to restart the systemd daemon
+systemctl daemon-reload
+
+# while still having problems with the daemon, try
+# systemd-analyze verify filetash.service
