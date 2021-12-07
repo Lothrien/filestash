@@ -17,7 +17,8 @@ tar -zxf libvips.tar.gz
 
 cd vips-8.7.0/
 
-sudo apt-get install libexif-dev libtiff-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev librsvg2-dev libgif-dev libglib2.0-dev libfftw3-dev libc6-dev libexpat-dev liborc-0.4-dev pkg-config glib2.0-dev libexpat1-dev libtiff5-dev libjpeg-turbo8-dev libgsf-1-dev
+# libjpeg-turbo8-dev is libjpeg62-turbo-dev on a debian system
+sudo apt-get install libexif-dev libtiff-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev librsvg2-dev libgif-dev libglib2.0-dev libfftw3-dev libc6-dev libexpat-dev liborc-0.4-dev pkg-config glib2.0-dev libexpat1-dev libtiff5-dev libgsf-1-dev
 
 sudo ./configure
 
