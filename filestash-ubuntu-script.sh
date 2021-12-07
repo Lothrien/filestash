@@ -5,6 +5,8 @@ read -p 'make sure you have installed go as described in the md file, then press
 sudo echo 'export GOPATH=/tmp/go' >> ~/.profile
 sudo echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
 sudo echo 'export CGO_LDFLAGS_ALLOW='-fopenmp'' >> ~/.profile
+# silence error in mattn/go-sqlite3 (see https://github.com/mattn/go-sqlite3/issues/822)
+echo 'CGO_CFLAGS="-g -O2 -Wno-return-local-addr"' >> ~/.profile
 sudo source ~/.profile
 
 mkdir -p $GOPATH/src/github.com/mickael-kerjean/
@@ -57,6 +59,7 @@ NODE_ENV=production npm run build
 
 cd $GOPATH/src/github.com/mickael-kerjean/filestash/server
 
+# error while getting libresize and libtransition in plg_image_light
 go get
 
 cd ..
