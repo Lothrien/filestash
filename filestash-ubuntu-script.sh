@@ -33,6 +33,9 @@ tar -zxf libraw.tar.gz
 
 cd LibRaw-0.19.0/
 
+# The autoreconf program automatically runs autoheader, aclocal, automake, autopoint and libtoolize as required.
+autoreconf -f -i
+
 sudo ./configure
 
 sudo make -j 6
